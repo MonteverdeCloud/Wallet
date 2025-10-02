@@ -401,25 +401,25 @@
 
         <!-- Barra de navegación inferior -->
         <nav class="bottom-nav">
-            <a href="#" class="nav-item active">
+            <a class="nav-item active">
                 <span class="nav-icon">
                     <i class="fa-solid fa-house-user"></i>
                 </span>
                 <span>Inicio</span>
             </a>
-            <a href="#" class="nav-item">
+            <a class="nav-item">
                 <span class="nav-icon">
                     <i class="fa-solid fa-wallet"></i>
                 </span>
                 <span>Billetera</span>
             </a>
-            <a href="#" class="nav-item">
+            <a class="nav-item">
                 <span class="nav-icon">
                     <i class="fa-solid fa-key"></i>
                 </span>
                 <span>Llavero</span>
             </a>
-            <a href="#" class="nav-item">
+            <a class="nav-item">
                 <span class="nav-icon">
                     <i class="fa-solid fa-note-sticky"></i>
                 </span>
@@ -489,11 +489,11 @@
         });
 
         keychainBtn.addEventListener("click", () => {
-            alert("Funcionalidad de Llavero - Próximamente");
+            window.location.href = "https://passwords.google.com";
         });
 
         notesBtn.addEventListener("click", () => {
-            alert("Funcionalidad de Notas - Próximamente");
+            window.location.href = "https://keep.google.com";
         });
 
         settingsBtn.addEventListener("click", () => {
@@ -515,7 +515,23 @@
 
                 // Aquí iría la lógica para cambiar de vista
                 const sectionName = this.querySelector('span:last-child').textContent;
-                alert(`Navegando a: ${sectionName}`);
+                
+                switch (sectionName) {
+                    case 'Inicio': 
+                        break;
+                    case 'Billetera':
+                        alert('Funcionalidad de Billetera - Próximamente');
+                        break;
+                    case 'Llavero':
+                        window.location.href = "https://passwords.google.com";
+                        break;
+                    case 'Notas':
+                        window.location.href = 'https://keep.google.com';
+                        break;
+                    default:
+                        alert(`Navegando a: ${sectionName}`);
+                        break;
+                }                
             });
         });
     </script>
