@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi App Segura</title>
+    <title>Inicio</title>
     <style>
         :root {
             --primary: #4285f4;
@@ -113,7 +113,7 @@
         /* Tarjetas de funciones principales */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 15px;
             padding: 15px;
         }
@@ -333,11 +333,13 @@
 
         /* Responsive */
         @media (max-width: 480px) {
-            .features-grid {
+            /* .features-grid {
                 grid-template-columns: 1fr;
-            }
+            } */
         }
     </style>
+    <!-- Agrega Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -362,81 +364,65 @@
 
         <!-- Sección de saludo -->
         <section class="greeting">
-            <h1>Bienvenido de nuevo</h1>
-            <p>¿Qué te gustaría hacer hoy?</p>
+            <h1>Bienvenido</h1>
         </section>
 
         <!-- Tarjetas de funciones principales -->
         <section class="features-grid">
             <div class="feature-card wallet" id="walletBtn">
-                <div class="feature-icon">💰</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
                 <h3>Billetera</h3>
                 <p>Gestiona tus finanzas</p>
             </div>
             <div class="feature-card keychain" id="keychainBtn">
-                <div class="feature-icon">🔑</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
                 <h3>Llavero</h3>
                 <p>Contraseñas seguras</p>
             </div>
             <div class="feature-card notes" id="notesBtn">
-                <div class="feature-icon">📝</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-note-sticky"></i>
+                </div>
                 <h3>Notas</h3>
                 <p>Información importante</p>
             </div>
             <div class="feature-card settings" id="settingsBtn">
-                <div class="feature-icon">⚙️</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
                 <h3>Ajustes</h3>
                 <p>Configuración</p>
-            </div>
-        </section>
-
-        <!-- Sección de elementos recientes -->
-        <section class="section">
-            <div class="section-header">
-                <h2>Elementos recientes</h2>
-                <a href="#" class="view-all">Ver todo</a>
-            </div>
-            <div class="items-list">
-                <div class="item wallet-item">
-                    <div class="item-icon">💳</div>
-                    <div class="item-details">
-                        <h3>Tarjeta Principal</h3>
-                        <p>Actualizado hace 2 días</p>
-                    </div>
-                </div>
-                <div class="item keychain-item">
-                    <div class="item-icon">🌐</div>
-                    <div class="item-details">
-                        <h3>Cuenta de Google</h3>
-                        <p>Actualizado ayer</p>
-                    </div>
-                </div>
-                <div class="item notes-item">
-                    <div class="item-icon">📋</div>
-                    <div class="item-details">
-                        <h3>Lista de compras</h3>
-                        <p>Creado hoy</p>
-                    </div>
-                </div>
             </div>
         </section>
 
         <!-- Barra de navegación inferior -->
         <nav class="bottom-nav">
             <a href="#" class="nav-item active">
-                <span class="nav-icon">🏠</span>
+                <span class="nav-icon">
+                    <i class="fa-solid fa-house-user"></i>
+                </span>
                 <span>Inicio</span>
             </a>
             <a href="#" class="nav-item">
-                <span class="nav-icon">💰</span>
+                <span class="nav-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </span>
                 <span>Billetera</span>
             </a>
             <a href="#" class="nav-item">
-                <span class="nav-icon">🔑</span>
+                <span class="nav-icon">
+                    <i class="fa-solid fa-key"></i>
+                </span>
                 <span>Llavero</span>
             </a>
             <a href="#" class="nav-item">
-                <span class="nav-icon">📝</span>
+                <span class="nav-icon">
+                    <i class="fa-solid fa-note-sticky"></i>
+                </span>
                 <span>Notas</span>
             </a>
         </nav>
