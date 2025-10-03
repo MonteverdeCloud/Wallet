@@ -1,7 +1,7 @@
 {
   "name": "My Wallet",
   "short_name": "Wallet",
-  "start_url": "/login.html",
+  "start_url": "/app/home/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
