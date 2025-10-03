@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <!-- Agrega el estilo de la aplicación -->
+    <link rel="stylesheet" href="/styles/app.css">
+    <!-- Agrega Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header con información del usuario -->
+        <header class="header">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-details">
+                    <h2 id="userName">Usuario</h2>
+                    <p id="userEmail">usuario@ejemplo.com</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z"
+                        fill="currentColor" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- Tarjetas de funciones principales -->
+        <section class="features-grid">
+
+        </section>
+
+        <!-- Barra de navegación inferior -->
+        <nav class="bottom-nav">
+            <a class="nav-item">
+                <span class="nav-icon">
+                    <i class="fa-solid fa-house-user"></i>
+                </span>
+                <span>Inicio</span>
+            </a>
+            <a class="nav-item">
+                <span class="nav-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </span>
+                <span>Billetera</span>
+            </a>
+            <a class="nav-item active">
+                <span class="nav-icon">
+                    <i class="fa-solid fa-key"></i>
+                </span>
+                <span>Llavero</span>
+            </a>
+            <a class="nav-item">
+                <span class="nav-icon">
+                    <i class="fa-solid fa-note-sticky"></i>
+                </span>
+                <span>Notas</span>
+            </a>
+        </nav>
+    </div>
+
+    <script type="module">
+        import { validarSesion, cerrarSesion } from "/js/auth.js";
+
+        const userName = document.getElementById("userName");
+        const userEmail = document.getElementById("userEmail");
+        const userAvatar = document.getElementById("userAvatar");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        // Constantes de apps
+        const app = "/app/{feature}/index.html";
+        const appInicio = app.replace("{feature}", "home");
+        const appBilletera = app.replace("{feature}", "wallet");
+        const appNotas = app.replace("{feature}", "notes");
+
+        // Validar sesión y mostrar datos
+        validarSesion({
+            onUserLogged: (user) => {
+                userName.textContent = user.nombre;
+                userEmail.textContent = user.email;
+
+                // Iniciales o primera letra
+                userAvatar.textContent =
+                    user.nombre !== "Usuario"
+                        ? user.nombre.split(' ').map(n => n[0]).join('').toUpperCase()
+                        : user.email[0].toUpperCase();
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener("click", cerrarSesion);
+
+        // Barra inferior
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+
+                const sectionName = this.querySelector('span:last-child').textContent;
+                switch (sectionName) {
+                    case 'Inicio': window.location.href = appInicio; break;
+                    case 'Billetera': window.location.href = appBilletera; break;
+                    case 'Notas': window.location.href = appNotas; break;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
