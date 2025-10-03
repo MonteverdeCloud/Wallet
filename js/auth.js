@@ -39,7 +39,7 @@ export function validarSesion({ onUserLogged, onError }) {
             ocultarLoading();
         } else {
             ocultarLoading();
-            window.location.href = "/login.html";
+            window.location.href = "/app/login.html";
             if (onError) onError();
         }
     });
@@ -50,5 +50,5 @@ export function validarSesion({ onUserLogged, onError }) {
  */
 export async function cerrarSesion() {
     await signOut(auth);
-    window.location.href = "/login.html";
+    window.location.href = "/app/login.html";
 }
