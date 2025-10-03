@@ -19,7 +19,13 @@
 </head>
 
 <body>
-    <div class="app-container">
+     <!-- Overlay de carga -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Validando sesión...</div>
+    </div>
+
+    <div class="app-container" id="appContainer">
         <!-- Header con información del usuario -->
         <header class="header">
             <div class="user-info">
@@ -97,7 +103,8 @@
                     user.nombre !== "Usuario"
                         ? user.nombre.split(' ').map(n => n[0]).join('').toUpperCase()
                         : user.email[0].toUpperCase();
-            }
+            },
+            onError: () => {}
         });
 
         // Logout
