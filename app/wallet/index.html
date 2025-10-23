@@ -46,7 +46,13 @@
 
         <!-- Tarjetas de funciones principales -->
         <section class="features-grid">
-
+            <div class="feature-card wallet" id="invoiceBtn">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+                </div>
+                <h3>Recibos</h3>
+                <p>Genera recibos</p>
+            </div>
         </section>
 
         <!-- Barra de navegación inferior -->
@@ -86,12 +92,15 @@
         const userAvatar = document.getElementById("userAvatar");
         const logoutBtn = document.getElementById("logoutBtn");
 
+        const invoiceBtn = document.getElementById("invoiceBtn");
+
         // Constantes de apps
         const app = "/app/{feature}/index.html";
         const appInicio = app.replace("{feature}", "home");
         const appLlavero = app.replace("{feature}", "keys");
         const appNotas = app.replace("{feature}", "notes");
-
+        const appRecibos = app.replace("{feature}", "invoice");
+        
         // Validar sesión y mostrar datos
         validarSesion({
             onUserLogged: (user) => {
@@ -104,11 +113,14 @@
                         ? user.nombre.split(' ').map(n => n[0]).join('').toUpperCase()
                         : user.email[0].toUpperCase();
             },
-            onError: () => {}
+            onError: () => { }
         });
 
         // Logout
         logoutBtn.addEventListener("click", cerrarSesion);
+
+        //Navegación
+        invoiceBtn.addEventListener("click", () => window.location.href = appRecibos);
 
         // Barra inferior
         document.querySelectorAll('.nav-item').forEach(item => {
